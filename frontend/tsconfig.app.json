@@ -22,7 +22,18 @@
     "noUnusedParameters": true,
     "erasableSyntaxOnly": true,
     "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noUncheckedSideEffectImports": true,
+
+    /* Alias per import puliti */
+    "baseUrl": "./src",
+    "paths": {
+      "@/*": ["*"],
+      "@core/*": ["core/*"],
+      "@modules/*": ["modules/*"],
+      "@components/*": ["components/*"],
+      "@assets/*": ["assets/*"],
+      "@state/*": ["state/*"]
+    }
   },
   "include": ["src"]
 }
