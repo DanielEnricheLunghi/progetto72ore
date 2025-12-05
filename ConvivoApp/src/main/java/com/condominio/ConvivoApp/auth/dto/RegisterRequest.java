@@ -8,4 +8,6 @@ public class RegisterRequest {
     private String email;
     private String password;
     private String displayName;
+    private String role; //* "USER" o "ADMIN"
+    private String vat;  //* opzionale, obbligatoria se ADMIN
 }

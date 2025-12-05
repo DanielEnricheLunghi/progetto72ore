@@ -1,0 +1,49 @@
+/**
+ * WelcomePage.css
+ * ----------------
+ * Stili dedicati alla pagina di benvenuto.
+ * Definisce layout centrato, tipografia e pulsanti.
+ */
+
+/* Contenitore principale: centrato e con padding */
+.welcome-container {
+  text-align: center; /* Allinea testo e contenuti al centro */
+  padding: 3rem;      /* Spazio interno */
+}
+
+/* Titolo principale */
+.welcome-title {
+  font-size: 2.5rem;  /* Dimensione grande per evidenziare */
+  margin-bottom: 1rem; /* Spazio sotto il titolo */
+  color: #333;        /* Colore scuro per leggibilità */
+}
+
+/* Descrizione sotto il titolo */
+.welcome-description {
+  font-size: 1.2rem;   /* Dimensione media */
+  color: #555;         /* Colore grigio per contrasto */
+  margin-bottom: 2rem; /* Spazio sotto la descrizione */
+}
+
+/* Contenitore dei pulsanti */
+.button-group {
+  margin-top: 2rem; /* Spazio sopra i pulsanti */
+}
+
+/* Stile base dei pulsanti */
+.welcome-button {
+  margin: 0 1rem;          /* Spazio orizzontale tra pulsanti */
+  padding: 0.8rem 1.5rem;  /* Spazio interno per dimensione */
+  font-size: 1rem;         /* Dimensione testo */
+  cursor: pointer;         /* Mostra il cursore a mano */
+  border: none;            /* Rimuove bordo di default */
+  border-radius: 5px;      /* Angoli arrotondati */
+  background-color: #007bff; /* Blu principale */
+  color: white;            /* Testo bianco */
+  transition: background-color 0.3s ease; /* Effetto hover */
+}
+
+/* Effetto hover sui pulsanti */
+.welcome-button:hover {
+  background-color: #0056b3; /* Blu più scuro al passaggio */
+}

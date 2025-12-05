@@ -1,10 +1,11 @@
-import LoginForm from "@/components/auth/LoginForm"; // ✅ percorso corretto
+/**
+ * LoginPage.tsx
+ * ----------------
+ * Pagina di login che mostra il LoginForm centrato.
+ */
+
+import LoginForm from "@/components/auth/LoginForm";
 
 export default function LoginPage() {
-    return (
-        <div>
-            <h1>Accedi</h1>
-            <LoginForm />
-        </div>
-    );
+  return <LoginForm />;
 }
