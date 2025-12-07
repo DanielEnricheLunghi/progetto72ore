@@ -1,8 +1,1 @@
-/* include gli stili di reset e normalizzazione */
-@tailwind base;
-
-/* include componenti predefiniti e classi di livello intermedio */
-@tailwind components;
-
-/* include tutte le utility (colori, spaziature, gradienti, ecc.) */
-@tailwind utilities;
+@import "tailwindcss";
