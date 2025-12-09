@@ -5,7 +5,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "ChatChatMessage")
 @Table(name = "chat_messages")
 @Data
 @NoArgsConstructor
@@ -21,7 +21,7 @@ public class ChatMessage {
     @JoinColumn(name = "conversation_id", nullable = false)
     private ChatConversation conversation;
 
-    @Column(nullable = false)
+    @Column(name = "sender_id", nullable = false)
     private UUID senderId;
 
     @Column(nullable = false, columnDefinition = "TEXT")

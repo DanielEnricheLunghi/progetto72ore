@@ -5,17 +5,22 @@ import com.condominio.ConvivoApp.chat.entity.ChatConversation;
 import com.condominio.ConvivoApp.chat.mapper.ConversationMapper;
 import com.condominio.ConvivoApp.chat.repository.ConversationRepository;
 import com.condominio.ConvivoApp.chat.service.ConversationService;
+import com.condominio.ConvivoApp.chat.exception.ConversationNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Service
+@Service("chatConversationServiceImpl")
+
 @RequiredArgsConstructor
 public class ConversationServiceImpl implements ConversationService {
 
     private final ConversationRepository conversationRepository;
+    @Qualifier("chatConversationMapperImpl")
+
     private final ConversationMapper conversationMapper;
 
     @Override

@@ -5,10 +5,29 @@
  * Gestisce il routing tra le varie pagine (Welcome, Login, Register).
  */
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "@modules/auth/pages/LoginPage";       // Pagina di login
 import RegisterPage from "@modules/auth/pages/RegisterPage"; // Pagina di registrazione
 import WelcomePage from "@modules/welcome/pages/WelcomePage"; // Pagina di benvenuto
+// CHAT
+import ChatPage from "@modules/chat/pages/ChatPage";
+import ConversationPage from "@modules/chat/pages/ConversationPage";
+// DOCUMENTS
+
+// DOCUMENTS
+import DocumentsListPage from "@modules/documents/pages/DocumentsListPage";
+import DocumentViewerPage from "@modules/documents/pages/DocumentViewerPage";
+import UploadDocumentPage from "@modules/documents/pages/UploadDocumentPage";
+
+// NOTIFICATIONS
+
+import NotificationsPage from "@/pages/notifications/NotificationPage";
+
+// TICKETS
+import TicketListPage from "@modules/ticket/pages/TicketListPage";
+import TicketDetailPage from "@modules/ticket/pages/TicketDetailPage";
+
+import ProtectedRoute from "@core/components/ProtectedRoute";
 
 function App() {
   return (
@@ -22,6 +41,90 @@ function App() {
 
         {/* Route per registrazione */}
         <Route path="/register" element={<RegisterPage />} />
+
+        {/* ======================
+                        CHAT
+         ====================== */}
+         <Route
+          path="/chat"
+          element={
+          <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO", "PROPRIETARIO", "INQUILINO", "FORNITORE"]}>
+          <ChatPage />
+          </ProtectedRoute>
+          }
+          />
+
+          <Route
+          path="/chat/:conversationId"
+          element={
+          <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO", "PROPRIETARIO", "INQUILINO", "FORNITORE"]}>
+          <ConversationPage />
+          </ProtectedRoute>
+          }
+          />
+        {/* ======================
+                DOCUMENTS
+        ====================== */}
+
+          <Route
+          path="/documents"
+          element={
+          <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO"]}>
+          <DocumentsListPage />
+          </ProtectedRoute>
+          }
+          />
+
+          <Route
+          path="/documents/view/:id"
+          element={
+          <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO"]}>
+         <DocumentViewerPage />
+          </ProtectedRoute>
+          }
+          />
+
+          <Route
+          path="/documents/upload"
+           element={
+           <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO"]}>
+           <UploadDocumentPage />
+           </ProtectedRoute>
+           }
+           />
+       {/* ======================
+                NOTIFICATIONS
+        ====================== */}
+        <Route
+          path="/notifications"
+          element={
+            <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO", "PROPRIETARIO", "INQUILINO", "FORNITORE"]}>
+              <NotificationPage />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ======================
+                TICKETS
+        ====================== */}
+        <Route
+          path="/tickets"
+          element={
+            <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO"]}>
+              <TicketListPage />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/tickets/:ticketId"
+          element={
+            <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO"]}>
+              <TicketDetailPage />
+            </ProtectedRoute>
+          }
+        />
+
       </Routes>
     </BrowserRouter>
   );

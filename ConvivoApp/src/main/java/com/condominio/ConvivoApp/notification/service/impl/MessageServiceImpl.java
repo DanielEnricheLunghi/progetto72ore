@@ -15,9 +15,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Service
+@Service("notificationMessageServiceImpl")
 @RequiredArgsConstructor
 @Slf4j
 @Transactional
@@ -28,10 +29,8 @@ public class MessageServiceImpl implements MessageService {
     private final MessageMapper messageMapper;
     private final SimpMessagingTemplate messagingTemplate;
 
-
-
     @Override
-    public MessageDto sendMessage(Long conversationId, Long senderId, String content) {
+    public MessageDto sendMessage(UUID conversationId, UUID senderId, String content) {
         ChatConversation conv = conversationRepository.findById(conversationId)
                 .orElseThrow(() -> new IllegalArgumentException("Conversation not found"));
 
@@ -39,7 +38,7 @@ public class MessageServiceImpl implements MessageService {
                 .conversation(conv)
                 .senderId(senderId)
                 .content(content)
-                .timestamp(LocalDateTime.now())
+                .createdAt(LocalDateTime.now())
                 .build();
 
         ChatMessage saved = messageRepository.save(message);
@@ -52,8 +51,8 @@ public class MessageServiceImpl implements MessageService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<MessageDto> getMessages(Long conversationId) {
-        return messageRepository.findByConversation_IdOrderByTimestampAsc(conversationId)
+    public List<MessageDto> getMessages(UUID conversationId) {
+        return messageRepository.findByConversation_IdOrderByCreatedAtAsc(conversationId)
                 .stream()
                 .map(messageMapper::toDto)
                 .collect(Collectors.toList());

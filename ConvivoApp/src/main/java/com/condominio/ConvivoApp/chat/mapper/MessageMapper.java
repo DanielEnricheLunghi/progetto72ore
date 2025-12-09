@@ -4,16 +4,18 @@ import com.condominio.ConvivoApp.chat.dto.MessageDto;
 import com.condominio.ConvivoApp.chat.entity.ChatMessage;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
-import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {ConversationMapperHelper.class},
+        implementationName = "ChatMessageMapperImpl",
+        implementationPackage = "com.condominio.ConvivoApp.chat.mapper"
+)
 public interface MessageMapper {
 
-    MessageMapper INSTANCE = Mappers.getMapper(MessageMapper.class);
-
-    @Mapping(target = "conversation.id", source = "conversationId")
+    //* Entity → DTO
+    @Mapping(source = "conversation.id", target = "conversationId")
     MessageDto toDto(ChatMessage message);
 
-    @Mapping(target = "conversation.id", source = "conversationId")
+    //* DTO → Entity (usa ConversationMapperHelper per risolvere l'UUID in ChatConversation)
+    @Mapping(source = "conversationId", target = "conversation")
     ChatMessage toEntity(MessageDto dto);
 }

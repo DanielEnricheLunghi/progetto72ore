@@ -7,11 +7,13 @@ import com.condominio.ConvivoApp.notification.repository.ConversationRepository;
 import com.condominio.ConvivoApp.notification.service.ConversationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,36 +23,56 @@ import java.util.stream.Collectors;
 public class ConversationServiceImpl implements ConversationService {
 
     private final ConversationRepository conversationRepository;
+
+
     private final ConversationMapper conversationMapper;
 
 
     @Override
-    public ConversationDto createConversation(Long userA, Long userB) {
+    public ConversationDto createConversation(ConversationDto dto) {
         ChatConversation conv = ChatConversation.builder()
-                .userA(userA)
-                .userB(userB)
+                .participants(List.of(dto.getUserA(), dto.getUserB()))
                 .createdAt(LocalDateTime.now())
                 .updatedAt(LocalDateTime.now())
+
                 .build();
+
         ChatConversation saved = conversationRepository.save(conv);
-        log.debug("Conversation created id={} between {} and {}", saved.getId(), userA, userB);
+        log.debug("Conversation created id={} between {} and {}", saved.getId(), dto.getUserA(), dto.getUserB());
         return conversationMapper.toDto(saved);
     }
 
+
+
     @Override
     @Transactional(readOnly = true)
-    public List<ConversationDto> getConversationsForUser(Long userId) {
-        return conversationRepository.findByUserAOrUserB(userId, userId)
+    public List<ConversationDto> getConversationsForUser(UUID userId) {
+        return conversationRepository.findByParticipantsContaining(userId)
                 .stream()
                 .map(conversationMapper::toDto)
                 .collect(Collectors.toList());
     }
 
+
+
     @Override
     @Transactional(readOnly = true)
-    public ConversationDto getConversation(Long conversationId) {
+    public ConversationDto getConversation(UUID conversationId) {
         ChatConversation conv = conversationRepository.findById(conversationId)
                 .orElseThrow(() -> new IllegalArgumentException("Conversation not found"));
         return conversationMapper.toDto(conv);
     }
+
+
+    @Override
+    @Transactional(readOnly = true)
+    public List<ConversationDto> getAllConversations(UUID userId) {
+        List<ChatConversation> conversations = conversationRepository.findByParticipantsContaining(userId);
+        return conversations.stream()
+                .map(conversationMapper::toDto)
+                .collect(Collectors.toList());
+    }
+
+
+
 }

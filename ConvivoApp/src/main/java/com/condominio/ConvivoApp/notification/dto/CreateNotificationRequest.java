@@ -13,6 +13,6 @@ public class CreateNotificationRequest {
     private String title;
     private String body;
     private String type;
-    private Long referenceId;
+    private UUID referenceId;
     private boolean sendEmail;
 }

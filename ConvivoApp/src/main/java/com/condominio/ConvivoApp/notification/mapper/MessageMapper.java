@@ -1,11 +1,17 @@
 package com.condominio.ConvivoApp.notification.mapper;
 
-import com.condominio.ConvivoApp.notification.dto.MessageDto;
 import com.condominio.ConvivoApp.notification.entity.ChatMessage;
+import com.condominio.ConvivoApp.notification.dto.MessageDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(
+        componentModel = "spring",
+        implementationName = "NotificationMessageMapperImpl",
+        implementationPackage = "com.condominio.ConvivoApp.notification.mapper"
+)
+
+
 public interface MessageMapper {
 
     @Mapping(target = "conversationId", source = "conversation.id")

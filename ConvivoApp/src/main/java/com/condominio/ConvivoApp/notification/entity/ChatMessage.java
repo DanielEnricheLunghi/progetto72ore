@@ -3,9 +3,10 @@ package com.condominio.ConvivoApp.notification.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Entity
-@Table(name = "chat_messages")
+@Table(name = "notification_messages")
 @Data
 @Builder
 @NoArgsConstructor
@@ -13,19 +14,19 @@ import java.time.LocalDateTime;
 public class ChatMessage {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue
+    private UUID id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "conversation_id", nullable = false)
     private ChatConversation conversation;
 
     @Column(name = "sender_id", nullable = false)
-    private Long senderId;
+    private UUID senderId;
 
-    @Column(nullable = false, columnDefinition = "TEXT")
+    @Column(name = "content", nullable = false)
     private String content;
 
-    @Column(nullable = false)
-    private LocalDateTime timestamp;
+    @Column(name = "created_at", nullable = false)
+    private LocalDateTime createdAt;
 }

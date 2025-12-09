@@ -10,4 +10,20 @@ public class RegisterRequest {
     private String displayName;
     private String role; //* "USER" o "ADMIN"
     private String vat;  //* opzionale, obbligatoria se ADMIN
+
+
+    //* Campi condominio
+    private String condominiumName;
+    private String condominiumAddress;
+    private String condominiumCity;
+    private String condominiumPostcode;
+    private String condominiumMetadata;
+
+    //* Campi membership
+    private Long unitId;
+    private String roleInUnit;
+    private String membershipMetadata;
 }
+
+
+

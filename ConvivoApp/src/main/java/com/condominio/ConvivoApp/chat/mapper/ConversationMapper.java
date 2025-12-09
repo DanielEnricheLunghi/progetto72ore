@@ -4,12 +4,18 @@ import com.condominio.ConvivoApp.chat.dto.ConversationDto;
 import com.condominio.ConvivoApp.chat.entity.ChatConversation;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.mapstruct.factory.Mappers;
 
-@Mapper(componentModel = "spring")
+@Mapper(
+        componentModel = "spring",
+        implementationName = "ChatConversationMapperImpl", // 👈 nome diverso
+        implementationPackage = "com.condominio.ConvivoApp.chat.mapper"
+)
+
+
 public interface ConversationMapper {
 
-    ConversationMapper INSTANCE = Mappers.getMapper(ConversationMapper.class);
 
     @Mapping(target = "participants", source = "participants")
     ConversationDto toDto(ChatConversation conversation);
