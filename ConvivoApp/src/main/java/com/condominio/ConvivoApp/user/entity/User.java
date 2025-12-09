@@ -39,6 +39,10 @@ public class User {
     @Column(name = "profile_json", columnDefinition = "JSON")
     private String profileJson;
 
+    @Column(name = "vat", length = 50)
+    private String vat;
+
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_roles",
