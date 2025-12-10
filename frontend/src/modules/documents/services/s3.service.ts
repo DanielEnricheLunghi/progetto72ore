@@ -1,7 +1,7 @@
 // src/modules/documents/services/s3.service.ts
 import axios from 'axios';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/documents/s3';
+const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api';
 
 export interface UploadedFile {
   filename: string;
@@ -16,14 +16,24 @@ class S3Service {
     formData.append('file', file);
     formData.append('condominiumId', String(condominiumId));
 
-    const response = await axios.post(`${API_URL}/upload`, formData, {
-      headers: { 'Content-Type': 'multipart/form-data' },
-      onUploadProgress: (progressEvent) => {
-        console.log('Upload progress:', Math.round((progressEvent.loaded * 100) / progressEvent.total));
-      }
-    });
+    try {
+      const response = await axios.post(`${API_URL}/documents/s3/upload`, formData, {
+        headers: { 'Content-Type': 'multipart/form-data' },
+        onUploadProgress: (progressEvent) => {
+          if (progressEvent.total) {
+            console.log(
+              'Upload progress:',
+              Math.round((progressEvent.loaded * 100) / progressEvent.total)
+            );
+          }
+        }
+      });
 
-    return response.data;
+      return response.data;
+    } catch (err) {
+      console.error("UPLOAD ERROR:", err.response?.data || err);
+      throw err;
+    }
   }
 }
 

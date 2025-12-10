@@ -14,7 +14,6 @@ import software.amazon.awssdk.services.s3.presigner.S3Presigner;
 import software.amazon.awssdk.services.s3.presigner.model.*;
 import software.amazon.awssdk.core.sync.RequestBody;
 
-import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.time.Duration;
 

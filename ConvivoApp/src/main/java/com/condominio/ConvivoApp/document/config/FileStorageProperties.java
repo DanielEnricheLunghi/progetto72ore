@@ -17,4 +17,5 @@ public class FileStorageProperties {
     private String accessKey;
     private String secretKey;
     private boolean pathStyleAccess = true; // useful for MinIO
+
 }
