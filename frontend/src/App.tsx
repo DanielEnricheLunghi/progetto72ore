@@ -135,7 +135,7 @@ function App() {
 
   <Route path="/documents" element={<DocumentsListPage />} />
   <Route path="/documents/view/:id" element={<DocumentViewerPage />} />
-  <Route path="/documents/upload" element={<UploadDocumentPage />} />
+  <Route path="/documents/upload/" element={<UploadDocumentPage />} />
 
 
   <Route path="/notifications" element={<NotificationPage />} />

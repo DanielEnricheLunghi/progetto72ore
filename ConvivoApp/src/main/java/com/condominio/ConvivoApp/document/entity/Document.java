@@ -46,4 +46,25 @@ public class Document {
     @OneToMany(mappedBy = "document", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<DocumentVersion> versions;
 
+    @Column(name="file_name")
+    private String fileName;
+
+    @Column(name="file_path")
+    private String filePath;
+
+    @Column(name="document_type")
+    private String documentType;
+
+    @Column(name = "mime_type")
+    private String mimeType;
+
+    @Column(name = "size_bytes")
+    private Long sizeBytes;
+
+    @Column(name = "uploaded_by")
+    private String uploadedBy;
+
+    @Column(name = "s3_path")
+    private String s3Path;
+
 }

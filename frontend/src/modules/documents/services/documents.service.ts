@@ -6,6 +6,10 @@ const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/docum
 
 class DocumentsService {
   static async getDocuments(condominiumId: number): Promise<DocumentDto[]> {
+       if (!condominiumId || isNaN(condominiumId)) {
+          throw new Error("condominiumId non valido");
+        }
+
     const response = await axios.get(`${API_URL}/condo/${condominiumId}`);
     return response.data;
   }
@@ -26,6 +30,10 @@ class DocumentsService {
   }
 
   static async createDocument(data: Partial<DocumentDto>): Promise<DocumentDto> {
+      if (!data.condominiumId) {
+          throw new Error("condominiumId mancante");
+        }
+
     const response = await axios.post(`${API_URL}`, data);
     return response.data;
   }

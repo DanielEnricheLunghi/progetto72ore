@@ -1,0 +1,27 @@
+
+Progetto: Presto - Piattaforma di Annunci Online
+Ho sviluppato una piattaforma di annunci che connette utenti che vogliono vendere oggetti usati con acquirenti e revisori. Il progetto è stato costruito seguendo una metodologia di sviluppo agile, partendo da un'analisi dettagliata delle user personas e del backlog di prodotto.
+
+Caratteristiche Principali
+
+Autenticazione e Gestione Utenti: Gli utenti possono registrarsi e fare login per caricare e gestire i propri annunci.
+
+Sistema di Revisione: Ho implementato un sistema per cui gli utenti possono diventare revisori, approvando o rifiutando gli annunci per mantenere alta la qualità del portale.
+
+Gestione Immagini Avanzata: La piattaforma supporta il caricamento di più foto con funzionalità automatiche come il cropping , l'applicazione di un 
+
+watermark personalizzato per proteggere i contenuti , e l'oscuramento dei volti per la 
+
+privacy degli utenti.
+
+Integrazione con Intelligenza Artificiale: Ho integrato l'API di Google Vision AI per analizzare in tempo reale il contenuto delle immagini, facilitando il lavoro dei revisori.
+
+Ricerca e Navigazione: Gli utenti possono cercare annunci tramite una ricerca full-text  e filtrare per categorie per trovare facilmente ciò che cercano.
+
+Stack Tecnologico
+
+Backend: Laravel 11, MySQL.
+
+Frontend: Laravel Livewire, Bootstrap, Vite.
+
+Integrazioni: Google Vision API, Laravel Fortify (per l'autenticazione), Spatie/Image (per la manipolazione delle immagini).

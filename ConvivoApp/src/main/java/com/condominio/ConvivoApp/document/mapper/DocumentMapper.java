@@ -9,6 +9,7 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = { VersionMapper.class })
 public interface DocumentMapper {
 
+
     DocumentDto toDto(Document entity);
 
     Document toEntity(DocumentDto dto);

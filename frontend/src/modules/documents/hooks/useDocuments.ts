@@ -14,6 +14,8 @@ export const useDocuments = (condominiumId: number) => {
   // Carica documenti
   const loadDocuments = useCallback(async () => {
     setLoading(true);
+    console.log(' loadDocuments → condominiumId:', condominiumId);
+
     try {
       const docs = await DocumentsService.getDocuments(condominiumId);
       setDocuments(docs);
@@ -50,6 +52,8 @@ export const useDocuments = (condominiumId: number) => {
   const uploadDocument = useCallback(async (file: File) => {
     try {
       setLoading(true);
+        console.log('📤 uploadDocument → condominiumId:', condominiumId);
+
       const uploadedFile = await S3Service.uploadFile(file, condominiumId);
       const doc = await DocumentsService.createDocument({
         filename: uploadedFile.filename,

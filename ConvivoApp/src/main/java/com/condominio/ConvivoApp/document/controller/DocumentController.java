@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 /**
 
- CRUD operations for Document (metadata) + Upload file*/,
+ CRUD operations for Document (metadata) + Upload file*/
 @RestController
 @RequestMapping("/api/documents")
 @RequiredArgsConstructor
