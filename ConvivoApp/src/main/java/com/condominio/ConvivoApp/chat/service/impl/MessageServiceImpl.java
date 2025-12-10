@@ -9,17 +9,22 @@ import com.condominio.ConvivoApp.chat.repository.ConversationRepository;
 import com.condominio.ConvivoApp.chat.repository.MessageRepository;
 import com.condominio.ConvivoApp.chat.service.MessageService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-@Service
+@Service("chatMessageServiceImpl")
+
+
 @RequiredArgsConstructor
 public class MessageServiceImpl implements MessageService {
 
     private final MessageRepository messageRepository;
     private final ConversationRepository conversationRepository;
+
+    @Qualifier("chatMessageMapperImpl")
     private final MessageMapper messageMapper;
 
     @Override

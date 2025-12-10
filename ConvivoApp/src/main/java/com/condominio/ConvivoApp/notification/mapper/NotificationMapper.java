@@ -6,7 +6,13 @@ import com.condominio.ConvivoApp.notification.dto.CreateNotificationRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper(componentModel = "spring")
+@Mapper(
+        componentModel = "spring",
+        implementationName = "NotificationConversationMapperImpl",
+        implementationPackage = "com.condominio.ConvivoApp.notification.mapper"
+)
+
+
 public interface NotificationMapper {
 
     NotificationDto toDto(Notification entity);

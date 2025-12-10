@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "Chat_Conversation_Chat")
 @Table(name = "chat_conversations")
 @Data
 @NoArgsConstructor

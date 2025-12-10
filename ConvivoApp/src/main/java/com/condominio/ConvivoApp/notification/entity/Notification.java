@@ -5,7 +5,7 @@ import lombok.*;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Entity
+@Entity(name = "NotificationChatMessage")
 @Table(name = "notifications")
 @Data
 @Builder
@@ -32,7 +32,7 @@ public class Notification {
     private String type;
 
     @Column(name = "reference_id")
-    private Long referenceId;
+    private UUID referenceId;
 
     @Column(name = "is_read", nullable = false)
     private boolean read;
