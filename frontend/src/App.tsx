@@ -21,7 +21,7 @@ import UploadDocumentPage from "@modules/documents/pages/UploadDocumentPage";
 
 // NOTIFICATIONS
 
-import NotificationsPage from "@/pages/notifications/NotificationPage";
+import NotificationPage from "@modules/notifications/pages/NotificationPage";
 
 // TICKETS
 import TicketListPage from "@modules/ticket/pages/TicketListPage";
@@ -32,19 +32,21 @@ import ProtectedRoute from "@core/components/ProtectedRoute";
 function App() {
   return (
     <BrowserRouter>
+
+
       <Routes>
-        {/* Route principale: homepage */}
+
+
         <Route path="/" element={<WelcomePage />} />
 
-        {/* Route per login */}
+
         <Route path="/login" element={<LoginPage />} />
 
-        {/* Route per registrazione */}
+
         <Route path="/register" element={<RegisterPage />} />
 
-        {/* ======================
-                        CHAT
-         ====================== */}
+
+     { /*
          <Route
           path="/chat"
           element={
@@ -62,9 +64,7 @@ function App() {
           </ProtectedRoute>
           }
           />
-        {/* ======================
-                DOCUMENTS
-        ====================== */}
+
 
           <Route
           path="/documents"
@@ -92,10 +92,7 @@ function App() {
            </ProtectedRoute>
            }
            />
-       {/* ======================
-                NOTIFICATIONS
-        ====================== */}
-        <Route
+
           path="/notifications"
           element={
             <ProtectedRoute roles={["ADMIN", "AMMINISTRATORE_CONDOMINIO", "PROPRIETARIO", "INQUILINO", "FORNITORE"]}>
@@ -104,9 +101,7 @@ function App() {
           }
         />
 
-        {/* ======================
-                TICKETS
-        ====================== */}
+
         <Route
           path="/tickets"
           element={
@@ -124,6 +119,24 @@ function App() {
             </ProtectedRoute>
           }
         />
+*/}
+
+
+  <Route path="/chat" element={<ChatPage />} />
+  <Route path="/chat/:conversationId" element={<ConversationPage />} />
+
+
+  <Route path="/documents" element={<DocumentsListPage />} />
+  <Route path="/documents/view/:id" element={<DocumentViewerPage />} />
+  <Route path="/documents/upload" element={<UploadDocumentPage />} />
+
+
+  <Route path="/notifications" element={<NotificationPage />} />
+
+
+  <Route path="/tickets" element={<TicketListPage />} />
+  <Route path="/tickets/:ticketId" element={<TicketDetailPage />} />
+
 
       </Routes>
     </BrowserRouter>
