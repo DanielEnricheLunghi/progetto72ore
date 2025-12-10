@@ -27,6 +27,11 @@ import NotificationPage from "@modules/notifications/pages/NotificationPage";
 import TicketListPage from "@modules/ticket/pages/TicketListPage";
 import TicketDetailPage from "@modules/ticket/pages/TicketDetailPage";
 
+// BILLING
+import BillingDashboard from "@modules/billing/pages/BillingDashboard";
+import BillingLayout from "@modules/billing/layout/BillingLayout";
+import ContractsPage from "@modules/billing/pages/ContractsPage";
+
 import ProtectedRoute from "@core/components/ProtectedRoute";
 
 function App() {
@@ -136,6 +141,15 @@ function App() {
 
   <Route path="/tickets" element={<TicketListPage />} />
   <Route path="/tickets/:ticketId" element={<TicketDetailPage />} />
+
+
+  <Route path="/billing" element={<BillingDashboard />} />
+  <Route path="/billing" element={<BillingLayout />}>
+    <Route path="contracts" element={<ContractsPage />} />
+  </Route>
+  <Route path="/billing/invoices" element={<div>Fatture</div>} />
+  <Route path="/billing/payments" element={<div>Pagamenti</div>} />
+
 
 
       </Routes>
