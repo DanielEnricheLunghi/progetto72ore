@@ -1,9 +1,8 @@
 /**
  * LoginForm.tsx
  * ----------------
- * Layout a due colonne: sinistra con form, destra con messaggio di benvenuto.
- * Sfondo gradiente solo sul form, card con bordi arrotondati e pulsante rosa.
- * Icone nei campi input, toggle visibilità password.
+ * Layout a due colonne con stile identico alla pagina Welcome.
+ * Sfondo blu scuro sfumato, testo bianco, pulsanti blu con hover e ombra.
  */
 
 import { useState } from "react";
@@ -31,14 +30,14 @@ export default function LoginForm() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      <div className="w-full max-w-4xl flex overflow-hidden rounded-[15px] shadow-2xl">
-        {/* Sezione sinistra: form con gradiente */}
-        <div className="w-1/2 p-8 flex flex-col justify-center bg-gradient-to-r from-pink-500 via-orange-400 to-yellow-300 text-white">
-          <h2 className="text-3xl font-bold mb-2">Hello!</h2>
-          <p className="text-lg mb-6">Sign into Your account</p>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#0a1f3d] to-[#0f2c5c] px-4 text-white">
+      <div className="w-full max-w-4xl flex overflow-hidden rounded-xl shadow-2xl bg-white/5 backdrop-blur-md">
+        {/* Sezione sinistra: form */}
+        <div className="w-1/2 p-8 flex flex-col justify-center">
+          <h2 className="text-3xl font-bold mb-2">Welcome Back!</h2>
+          <p className="text-lg mb-6 text-gray-200">Sign into your account</p>
 
-          {error && <p className="text-sm text-red-100 mb-4">{error}</p>}
+          {error && <p className="text-sm text-red-200 mb-4">{error}</p>}
 
           <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
@@ -50,7 +49,7 @@ export default function LoginForm() {
                 value={email}
                 onChange={e => setEmail(e.target.value)}
                 required
-                className="w-full pl-10 pr-4 py-3 rounded-md bg-white/20 text-white placeholder-white focus:ring-2 focus:ring-white focus:outline-none"
+                className="w-full pl-10 pr-4 py-3 rounded-md bg-white/10 text-white placeholder-white focus:ring-2 focus:ring-white focus:outline-none"
               />
             </div>
 
@@ -63,7 +62,7 @@ export default function LoginForm() {
                 value={password}
                 onChange={e => setPassword(e.target.value)}
                 required
-                className="w-full pl-10 pr-10 py-3 rounded-md bg-white/20 text-white placeholder-white focus:ring-2 focus:ring-white focus:outline-none"
+                className="w-full pl-10 pr-10 py-3 rounded-md bg-white/10 text-white placeholder-white focus:ring-2 focus:ring-white focus:outline-none"
               />
               <button
                 type="button"
@@ -93,13 +92,13 @@ export default function LoginForm() {
             {/* Submit */}
             <button
               type="submit"
-              className="w-full py-3 bg-white text-pink-500 font-semibold rounded-md hover:bg-pink-100 transition"
+              className="w-full py-3 bg-blue-600 text-white font-semibold rounded-md hover:bg-blue-800 hover:scale-105 hover:shadow-lg transform transition duration-300"
             >
               SIGN IN
             </button>
 
             {/* Link */}
-            <p className="text-sm text-center mt-2">
+            <p className="text-sm text-center mt-2 text-gray-200">
               Don't have an account?{" "}
               <a href="#" className="underline hover:text-white/80">
                 Create
@@ -109,11 +108,10 @@ export default function LoginForm() {
         </div>
 
         {/* Sezione destra: messaggio */}
-        <div className="w-1/2 bg-pink-100 p-8 flex flex-col justify-center items-center text-center">
-          <h2 className="text-3xl font-bold text-pink-600 mb-4">Welcome Back!</h2>
-          <p className="text-gray-700 text-sm leading-relaxed">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
+        <div className="w-1/2 bg-white/10 p-8 flex flex-col justify-center items-center text-center">
+          <h2 className="text-3xl font-bold text-white mb-4">ConvivoApp</h2>
+          <p className="text-gray-200 text-sm leading-relaxed">
+            Gestione modulare per comunità condominiali. Accedi per iniziare!
           </p>
         </div>
       </div>

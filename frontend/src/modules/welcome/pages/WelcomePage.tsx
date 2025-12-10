@@ -1,37 +1,35 @@
 /**
  * WelcomePage.tsx
  * ----------------
- * Componente React che rappresenta la pagina di benvenuto.
- * Mostra titolo, descrizione e due pulsanti (Accedi/Registrati).
- * Ogni pulsante porta alla rispettiva pagina tramite React Router.
+ * Componente React con Tailwind che rappresenta la pagina di benvenuto.
+ * Include effetto hover di ingrandimento e ombra sui pulsanti.
  */
 
-import { useNavigate } from "react-router-dom"; // Hook per navigare tra le route
-import "./WelcomePage.css"; // Import degli stili CSS dedicati
+import { useNavigate } from "react-router-dom";
 
 function WelcomePage() {
-  const navigate = useNavigate(); // Inizializza la funzione navigate
+  const navigate = useNavigate();
 
   return (
-    <div className="welcome-container">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-[#0a1f3d] to-[#0f2c5c] text-white px-6">
       {/* Titolo principale */}
-      <h1 className="welcome-title">Benvenuto su ConvivoApp</h1>
+      <h1 className="text-4xl font-bold mb-4">Benvenuto su ConvivoApp</h1>
 
       {/* Breve descrizione */}
-      <p className="welcome-description">
-        Gestione modulare per comunità e veicoli pesanti.
+      <p className="text-lg mb-8 text-gray-300">
+        Gestione modulare per comunità condominiali
       </p>
 
       {/* Sezione pulsanti */}
-      <div className="button-group">
+      <div className="flex space-x-4">
         <button
-          className="welcome-button"
+          className="bg-blue-600 hover:bg-blue-800 hover:scale-105 hover:shadow-lg transform transition duration-300 text-white font-semibold py-2 px-6 rounded"
           onClick={() => navigate("/login")}
         >
           Accedi
         </button>
         <button
-          className="welcome-button"
+          className="bg-blue-600 hover:bg-blue-800 hover:scale-105 hover:shadow-lg transform transition duration-300 text-white font-semibold py-2 px-6 rounded"
           onClick={() => navigate("/register")}
         >
           Registrati
