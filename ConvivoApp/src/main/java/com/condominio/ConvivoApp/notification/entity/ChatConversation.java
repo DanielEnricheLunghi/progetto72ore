@@ -35,8 +35,6 @@ public class ChatConversation {
     @Builder.Default
     private List<UUID> participants = new ArrayList<>();
 
-
-
     @Column(name = "created_at", nullable = false)
     private LocalDateTime createdAt;
 
