@@ -4,7 +4,7 @@ import {
   ContractUpdate,
 } from "../types/contractTypes";
 
-const BASE_URL = "/api/contracts";
+const BASE_URL = "http://localhost:8080/api/contracts";
 
 export const contractService = {
   // -------------------------
