@@ -1,8 +1,9 @@
+// src/modules/documents/services/s3.service.ts
 import axios from 'axios';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:8080/api/documents/s3';
 
-interface UploadedFile {
+export interface UploadedFile {
   filename: string;
   s3Path: string;
   mimeType: string;
@@ -17,6 +18,9 @@ class S3Service {
 
     const response = await axios.post(`${API_URL}/upload`, formData, {
       headers: { 'Content-Type': 'multipart/form-data' },
+      onUploadProgress: (progressEvent) => {
+        console.log('Upload progress:', Math.round((progressEvent.loaded * 100) / progressEvent.total));
+      }
     });
 
     return response.data;
