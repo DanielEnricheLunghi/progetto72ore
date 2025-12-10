@@ -31,6 +31,8 @@ import TicketDetailPage from "@modules/ticket/pages/TicketDetailPage";
 import BillingDashboard from "@modules/billing/pages/BillingDashboard";
 import BillingLayout from "@modules/billing/layout/BillingLayout";
 import ContractsPage from "@modules/billing/pages/ContractsPage";
+import PaymentsPage from "@modules/billing/pages/PaymentsPage";
+import InvoicesPage from "@modules/billing/pages/InvoicesPage";
 
 import ProtectedRoute from "@core/components/ProtectedRoute";
 
@@ -147,8 +149,8 @@ function App() {
   <Route path="/billing" element={<BillingLayout />}>
     <Route path="contracts" element={<ContractsPage />} />
   </Route>
-  <Route path="/billing/invoices" element={<div>Fatture</div>} />
-  <Route path="/billing/payments" element={<div>Pagamenti</div>} />
+ <Route path="/billing/invoices" element={<InvoicesPage />} />
+ <Route path="/billing/payments" element={<PaymentsPage />} />
 
 
 
